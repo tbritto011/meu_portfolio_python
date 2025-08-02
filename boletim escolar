@@ -1,0 +1,36 @@
+def boletim(*alunos):
+  geral = []  # Use a list to store student dictionaries
+  while True:
+    nome = input("Nome: ")
+    dados = {'Nome': nome, 'Notas': []} # Create a dictionary for each student
+    for c in range(0,3):
+      nota = float(input("Nota: "))
+      dados['Notas'].append(nota) # Append notes to the 'Notas' list
+    media = sum(dados["Notas"])/len(dados["Notas"])
+    dados['Média'] = media
+
+    if media >= 7:
+      dados['Situação'] = "Aprovado"
+    if media >= 5 and media < 7:
+      dados['Situação'] = 'Recuperação'
+    if media < 5:
+      dados['Situação'] = 'Reprovado'
+
+                                    
+    geral.append(dados) # Append the student dictionary to the general list
+    print("-" * 40)
+    print("BOLETIM".center(40))
+    print(f"Aluno:{dados['Nome']}")
+    print(f"Notas: {dados['Notas']}")
+    print(f"Média: {dados['Média']}")
+    print(f"Situação: {dados['Situação']}")
+    print("-" * 40)
+    resp = str(input("Quer continuar? (S/N): ")).strip().upper()
+
+
+
+    if resp == "N":
+      print("FIM!!!")
+      break
+
+boletim()
